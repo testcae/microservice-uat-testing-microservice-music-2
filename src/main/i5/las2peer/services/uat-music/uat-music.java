@@ -88,7 +88,66 @@ public class uat-music extends RESTService {
 
     private final uat-music service = (uat-music) Context.getCurrent().getService();
 
-    
+      /**
+   * 
+   * getMusic
+   *
+   * 
+   *
+   * 
+   * @return Response 
+   * 
+   */
+  @GET
+  @Path("//get")
+  @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.TEXT_PLAIN)
+  @ApiResponses(value = {
+       @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "responseGet")
+  })
+  @ApiOperation(value = "getMusic", notes = "$HTTP_Method_Description$")
+  public Response getMusic() {
+
+    // responseGet
+    boolean responseGet_condition = true;
+    if(responseGet_condition) {
+      JSONObject resultGet = new JSONObject();
+      return Response.status(HttpURLConnection.HTTP_OK).entity(resultGet.toJSONString()).build();
+    }
+    return null;
+  }
+
+  /**
+   * 
+   * postMusic
+   *
+   * 
+   * @param payloadPost  a JSONObject
+   * 
+   * @return Response 
+   * 
+   */
+  @GET
+  @Path("//post")
+  @Produces(MediaType.TEXT_PLAIN)
+  @Consumes(MediaType.TEXT_PLAIN)
+  @ApiResponses(value = {
+       @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "responsePost")
+  })
+  @ApiOperation(value = "postMusic", notes = "$HTTP_Method_Description$")
+  public Response postMusic(String payloadPost) {
+    JSONObject payloadPost_JSON = (JSONObject) JSONValue.parse(payloadPost);
+
+    // responsePost
+    boolean responsePost_condition = true;
+    if(responsePost_condition) {
+      String responsePostId = "Some String";
+      return Response.status(HttpURLConnection.HTTP_OK).entity(responsePostId).build();
+    }
+    return null;
+  }
+
+
 
   }
 

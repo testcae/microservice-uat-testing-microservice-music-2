@@ -90,6 +90,50 @@ public class uat-musicTest {
   }
 
 
+  /**
+   * 
+   * Test for the getMusic method.
+   * 
+   */
+  @Test
+  public void testgetMusic() {
+    MiniClient c = new MiniClient();
+    c.setAddressPort(HTTP_ADDRESS, HTTP_PORT);
+    try {
+
+      c.setLogin(testAgent.getIdentifier(), testPass);
+      ClientResponse result = c.sendRequest("GET", mainPath + "//get", "",
+        MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON, new HashMap<String,String>());
+      assertTrue(true); // change here
+      System.out.println("Result of 'testgetMusic': " + result.getResponse().trim());
+    } catch (Exception e) {
+      e.printStackTrace();
+      fail("Exception: " + e);
+    }
+  }
+
+  /**
+   * 
+   * Test for the postMusic method.
+   * 
+   */
+  @Test
+  public void testpostMusic() {
+    MiniClient c = new MiniClient();
+    c.setAddressPort(HTTP_ADDRESS, HTTP_PORT);
+    try {
+      JSONObject payloadPost = new JSONObject();
+      c.setLogin(testAgent.getIdentifier(), testPass);
+      ClientResponse result = c.sendRequest("GET", mainPath + "//post", payloadPost.toJSONString(),
+        MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN, new HashMap<String,String>());
+      assertTrue(true); // change here
+      System.out.println("Result of 'testpostMusic': " + result.getResponse().trim());
+    } catch (Exception e) {
+      e.printStackTrace();
+      fail("Exception: " + e);
+    }
+  }
+
 
 
 
