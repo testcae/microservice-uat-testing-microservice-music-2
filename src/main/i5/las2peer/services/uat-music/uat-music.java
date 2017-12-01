@@ -77,9 +77,9 @@ public class uat-music extends RESTService {
 
   @Api
   @SwaggerDefinition(
-      info = @Info(title = "uat-testing-microservice-music-2", version = "$Metadata_Version$",
-          description = "$Metadata_Description$",
-          termsOfService = "$Metadata_Terms$",
+      info = @Info(title = "uat-testing-microservice-music-2", version = "1.0",
+          description = "UAT microservice music 2",
+          termsOfService = "LICENSE.txt",
           contact = @Contact(name = "Melisa Cecilia", email = "CAEAddress@gmail.com") ,
           license = @License(name = "BSD",
               url = "https://github.com/testcae/microservice-uat-testing-microservice-music-2/blob/master/LICENSE.txt") ) )
