@@ -95,7 +95,7 @@ public class uat-music extends RESTService {
    * 
    *
    * 
-   * @return Response 
+   * @return Response response get all
    * 
    */
   @GET
@@ -103,7 +103,7 @@ public class uat-music extends RESTService {
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.TEXT_PLAIN)
   @ApiResponses(value = {
-       @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "responseGet")
+       @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "response get all")
   })
   @ApiOperation(value = "getMusic", notes = "$HTTP_Method_Description$")
   public Response getMusic() {
@@ -111,7 +111,7 @@ public class uat-music extends RESTService {
     // responseGet
     boolean responseGet_condition = true;
     if(responseGet_condition) {
-      JSONObject resultGet = new JSONObject();
+      JSONObject resultGet = new classes().new musicImage().toJSON();
       return Response.status(HttpURLConnection.HTTP_OK).entity(resultGet.toJSONString()).build();
     }
     return null;
@@ -122,9 +122,9 @@ public class uat-music extends RESTService {
    * postMusic
    *
    * 
-   * @param payloadPost  a JSONObject
+   * @param payloadPost payload post image music a JSONObject
    * 
-   * @return Response 
+   * @return Response response post music
    * 
    */
   @GET
@@ -132,12 +132,18 @@ public class uat-music extends RESTService {
   @Produces(MediaType.TEXT_PLAIN)
   @Consumes(MediaType.TEXT_PLAIN)
   @ApiResponses(value = {
-       @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "responsePost")
+       @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "response post music")
   })
   @ApiOperation(value = "postMusic", notes = "$HTTP_Method_Description$")
   public Response postMusic(String payloadPost) {
-    JSONObject payloadPost_JSON = (JSONObject) JSONValue.parse(payloadPost);
-
+   classes.musicImage payloadpayloadPostObject = new classes().new musicImage();
+   try { 
+       payloadpayloadPostObject.fromJSON(payloadPost);
+   } catch (Exception e) { 
+       e.printStackTrace();
+       JSONObject result = new JSONObject();
+       return Response.status(HttpURLConnection.HTTP_INTERNAL_ERROR).entity("Cannot convert json to object").build();
+   }
     // responsePost
     boolean responsePost_condition = true;
     if(responsePost_condition) {
