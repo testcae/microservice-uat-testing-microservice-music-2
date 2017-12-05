@@ -107,61 +107,14 @@ public class uat-music extends RESTService {
   })
   @ApiOperation(value = "getMusic", notes = " ")
   public Response getMusic() {
-    try {
-      Object returnServiceGetImage = Context.getCurrent().invoke(
-          "i5.las2peer.services.uatTestImage.uatTestImage@1.0", "getImage");
-      HashMap<Integer, classes.image> imageMap = new HashMap<Integer, classes.image>(); 
 
-      // put into array
-      JSONParser parser = new JSONParser();
-      JSONArray jsonArray = (JSONArray)parser.parse((String) returnServiceGetImage);
-      Iterator i = jsonArray.iterator();
-
-      // put into map of id and image object
-      while (i.hasNext())
-      {
-          JSONObject jsonObj = (JSONObject) i.next();
-          classes.image imageObj = new classes().new image();
-          imageObj.fromJSON(jsonObj.toJSONString());
-          imageMap.put(imageObj.getimageId(), imageObj);
-          System.out.println(jsonObj);
-      }
-
-      // now process from music database
-      Connection conn = service.dbm.getConnection();
-      PreparedStatement query = conn.prepareStatement("SELECT * FROM uatTest.tblMusic");
-      ResultSet result = query.executeQuery();
-
-      JSONArray jsonResult = new JSONArray();
-      while(result.next()) {
-        
-        // music object
-        classes.music musicResult = new classes().new music();
-        musicResult.setmusicName(result.getString("musicName"));
-        musicResult.setmusicUrl(result.getString("musicUrl"));
-        musicResult.setmusicId(result.getInt("musicId"));
-        musicResult.setimageId(result.getInt("imageId"));
-
-        // music + image
-        classes.image imageResult = imageMap.get(musicResult.getimageId());
-        classes.imageMusic imageMusicResult = new classes().new musicImage();
-
-        if(imageResult != null) {
-          imageMusicResult.setimageName(imageResult.getimageName());
-          imageMusicResult.setimageUrl(imageResult.getimageUrl());
-        }
-        imageMusicResult.setmusicName(musicResult.getmusicName());
-        imageMusicResult.setmusicUrl(musicResult.getmusicUrl());
-
-        jsonResult.add(imageMusicResult.toJSON());
-      }
-      // responseGetMusic
-      return Response.status(HttpURLConnection.HTTP_OK).entity(jsonResult.toJSONString()).build();
-    } catch (Exception e) {
-      e.printStackTrace();
-      JSONObject result = new JSONObject(); 
-      return Response.status(HttpURLConnection.HTTP_INTERNAL_ERROR).entity(result.toJSONString()).build();
+    // responseGet
+    boolean responseGet_condition = true;
+    if(responseGet_condition) {
+      JSONObject resultGet = new classes().new musicImage().toJSON();
+      return Response.status(HttpURLConnection.HTTP_OK).entity(resultGet.toJSONString()).build();
     }
+    return null;
   }
 
   /**
