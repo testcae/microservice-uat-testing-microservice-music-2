@@ -210,8 +210,8 @@ public class uatMusic extends RESTService {
       Connection conn = service.dbm.getConnection();
       PreparedStatement query = conn.prepareStatement(
         "INSERT INTO uatTest.tblMusic(musicName, musicUrl, imageId) VALUES(?,?,?) ");
-      query.setString(1, payloadpayloadPostMusicObject.getmusicName());
-      query.setString(2, payloadpayloadPostMusicObject.getmusicUrl());
+      query.setString(1, payloadpayloadPostObject.getmusicName());
+      query.setString(2, payloadpayloadPostObject.getmusicUrl());
       query.setInt(3, imageId);
       query.executeUpdate();
 
