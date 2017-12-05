@@ -50,7 +50,7 @@ public class uat-musicTest {
   // version does not matter in tests
   private static final ServiceNameVersion testTemplateService = new ServiceNameVersion(uat-music.class.getCanonicalName(),"0.1");
 
-  private static final String mainPath = "musicapp/";
+  private static final String mainPath = "musicapp";
 
 
   /**
@@ -102,7 +102,7 @@ public class uat-musicTest {
     try {
 
       c.setLogin(testAgent.getIdentifier(), testPass);
-      ClientResponse result = c.sendRequest("GET", mainPath + "//get", "",
+      ClientResponse result = c.sendRequest("GET", mainPath + "/get", "",
         MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON, new HashMap<String,String>());
       assertTrue(true); // change here
       System.out.println("Result of 'testgetMusic': " + result.getResponse().trim());
@@ -124,7 +124,7 @@ public class uat-musicTest {
     try {
       JSONObject payloadPost = new JSONObject();
       c.setLogin(testAgent.getIdentifier(), testPass);
-      ClientResponse result = c.sendRequest("GET", mainPath + "//post", payloadPost.toJSONString(),
+      ClientResponse result = c.sendRequest("GET", mainPath + "/post", payloadPost.toJSONString(),
         MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN, new HashMap<String,String>());
       assertTrue(true); // change here
       System.out.println("Result of 'testpostMusic': " + result.getResponse().trim());

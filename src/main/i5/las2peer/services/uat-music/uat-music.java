@@ -42,7 +42,7 @@ import org.json.simple.*;
  * outsourced to (imported) classes.
  *
  */
-@ServicePath("musicapp/")
+@ServicePath("musicapp")
 @ManualDeployment
 public class uat-music extends RESTService {
 
@@ -99,13 +99,13 @@ public class uat-music extends RESTService {
    * 
    */
   @GET
-  @Path("//get")
+  @Path("/get")
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.TEXT_PLAIN)
   @ApiResponses(value = {
        @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "response get all")
   })
-  @ApiOperation(value = "getMusic", notes = "$HTTP_Method_Description$")
+  @ApiOperation(value = "getMusic", notes = " ")
   public Response getMusic() {
 
     // responseGet
@@ -128,13 +128,13 @@ public class uat-music extends RESTService {
    * 
    */
   @GET
-  @Path("//post")
+  @Path("/post")
   @Produces(MediaType.TEXT_PLAIN)
   @Consumes(MediaType.TEXT_PLAIN)
   @ApiResponses(value = {
        @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "response post music")
   })
-  @ApiOperation(value = "postMusic", notes = "$HTTP_Method_Description$")
+  @ApiOperation(value = "postMusic", notes = " ")
   public Response postMusic(String payloadPost) {
    classes.musicImage payloadpayloadPostObject = new classes().new musicImage();
    try { 
