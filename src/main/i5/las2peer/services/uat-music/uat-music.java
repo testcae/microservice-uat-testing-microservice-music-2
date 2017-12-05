@@ -149,7 +149,7 @@ public class uat-music extends RESTService {
         if(imageResult != null) {
           imageMusicResult.setimageName(imageResult.getimageName());
           imageMusicResult.setimageUrl(imageResult.getimageUrl()); 
-imageMusicResult.setimageUrl(imageResult.getimageUrl());
+          imageMusicResult.setimageId(imageResult.getimageUrl());
         }
         imageMusicResult.setmusicName(musicResult.getmusicName());
         imageMusicResult.setmusicUrl(musicResult.getmusicUrl());
