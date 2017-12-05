@@ -10,15 +10,6 @@ public class classes {
 
     public musicImage() {}
     
-    private int musicId;
-
-    public void setmusicId(int setValue) {
-        this.musicId = setValue;
-    }
-
-    public int getmusicId() {
-        return this.musicId;
-    }
     private String musicName;
 
     public void setmusicName(String setValue) {
@@ -36,15 +27,6 @@ public class classes {
 
     public String getmusicUrl() {
         return this.musicUrl;
-    }
-    private int imageId;
-
-    public void setimageId(int setValue) {
-        this.imageId = setValue;
-    }
-
-    public int getimageId() {
-        return this.imageId;
     }
     private String imageName;
 
@@ -68,10 +50,8 @@ public class classes {
     public JSONObject toJSON() {
 
         JSONObject jo = new JSONObject();
-        jo.put("musicId", this.musicId); 
         jo.put("musicName", this.musicName); 
         jo.put("musicUrl", this.musicUrl); 
-        jo.put("imageId", this.imageId); 
         jo.put("imageName", this.imageName); 
         jo.put("imageUrl", this.imageUrl); 
 
@@ -80,10 +60,8 @@ public class classes {
 
     public void fromJSON(String jsonString) throws ParseException {
         JSONObject jsonObject = (JSONObject) JSONValue.parseWithException(jsonString);
-        this.musicId = ((Long) jsonObject.get("musicId")).intValue(); 
         this.musicName = (String) jsonObject.get("musicName"); 
         this.musicUrl = (String) jsonObject.get("musicUrl"); 
-        this.imageId = ((Long) jsonObject.get("imageId")).intValue(); 
         this.imageName = (String) jsonObject.get("imageName"); 
         this.imageUrl = (String) jsonObject.get("imageUrl"); 
 
@@ -172,6 +150,15 @@ public class classes {
     public String getmusicUrl() {
         return this.musicUrl;
     }
+    private int imageId;
+
+    public void setimageId(int setValue) {
+        this.imageId = setValue;
+    }
+
+    public int getimageId() {
+        return this.imageId;
+    }
 
     public JSONObject toJSON() {
 
@@ -179,6 +166,7 @@ public class classes {
         jo.put("musicId", this.musicId); 
         jo.put("musicName", this.musicName); 
         jo.put("musicUrl", this.musicUrl); 
+        jo.put("imageId", this.imageId); 
 
         return jo;
     }
@@ -188,6 +176,7 @@ public class classes {
         this.musicId = ((Long) jsonObject.get("musicId")).intValue(); 
         this.musicName = (String) jsonObject.get("musicName"); 
         this.musicUrl = (String) jsonObject.get("musicUrl"); 
+        this.imageId = ((Long) jsonObject.get("imageId")).intValue(); 
 
     }
 
