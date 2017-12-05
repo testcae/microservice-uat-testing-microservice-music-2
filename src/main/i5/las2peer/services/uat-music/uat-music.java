@@ -107,9 +107,6 @@ public class uat-music extends RESTService {
   })
   @ApiOperation(value = "getMusic", notes = " ")
   public Response getMusic() {
-
-    
-
     try {
       Object returnServiceGetImage = Context.getCurrent().invoke(
           "i5.las2peer.services.uatTestImage.uatTestImage@1.0", "getImage");
