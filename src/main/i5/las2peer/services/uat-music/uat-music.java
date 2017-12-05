@@ -108,60 +108,13 @@ public class uat-music extends RESTService {
   @ApiOperation(value = "getMusic", notes = " ")
   public Response getMusic() {
 
-    try {
-      Object returnServiceGetImage = Context.getCurrent().invoke(
-          "i5.las2peer.services.uatTestImage.uatTestImage@1.0", "getImage");
-      HashMap<Integer, classes.image> imageMap = new HashMap<Integer, classes.image>();
-      // put into array
-      JSONParser parser = new JSONParser();
-      JSONArray jsonArray = (JSONArray)parser.parse((String) returnServiceGetImage);
-      Iterator i = jsonArray.iterator();
-
-      // put into map of id and image object
-      while (i.hasNext())
-      {
-          JSONObject jsonObj = (JSONObject) i.next();
-          classes.image imageObj = new classes().new image();
-          imageObj.fromJSON(jsonObj.toJSONString());
-          imageMap.put(imageObj.getimageId(), imageObj);
-          System.out.println(jsonObj);
-      }
-
-      // now process from music database
-      Connection conn = service.dbm.getConnection();
-      PreparedStatement query = conn.prepareStatement("SELECT * FROM uatTest.tblMusic");
-      ResultSet result = query.executeQuery();
-
-      JSONArray jsonResult = new JSONArray();
-      while(result.next()) {
-        
-        // music object
-        classes.music musicResult = new classes().new music();
-        musicResult.setmusicName(result.getString("musicName"));
-        musicResult.setmusicUrl(result.getString("musicUrl"));
-        musicResult.setmusicId(result.getInt("musicId"));
-        musicResult.setimageId(result.getInt("imageId"));
-
-        // music + image
-        classes.image imageResult = imageMap.get(musicResult.getimageId());
-        classes.musicImage imageMusicResult = new classes().new musicImage();
-
-        if(imageResult != null) {
-          imageMusicResult.setimageName(imageResult.getimageName());
-          imageMusicResult.setimageUrl(imageResult.getimageUrl());
-        }
-        imageMusicResult.setmusicName(musicResult.getmusicName());
-        imageMusicResult.setmusicUrl(musicResult.getmusicUrl());
-
-        jsonResult.add(imageMusicResult.toJSON());
-      }
-      // responseGetMusic
-      return Response.status(HttpURLConnection.HTTP_OK).entity(jsonResult.toJSONString()).build();
-    } catch (Exception e) {
-      e.printStackTrace();
-      JSONObject result = new JSONObject(); 
-      return Response.status(HttpURLConnection.HTTP_INTERNAL_ERROR).entity(result.toJSONString()).build();
+    // responseGet
+    boolean responseGet_condition = true;
+    if(responseGet_condition) {
+      JSONObject resultGet = new classes().new musicImage().toJSON();
+      return Response.status(HttpURLConnection.HTTP_OK).entity(resultGet.toJSONString()).build();
     }
+    return null;
   }
 
   /**
@@ -191,40 +144,13 @@ public class uat-music extends RESTService {
        JSONObject result = new JSONObject();
        return Response.status(HttpURLConnection.HTTP_INTERNAL_ERROR).entity("Cannot convert json to object").build();
    }
-       // get image object to pass to music service
-   classes.image imageObject = new classes().new image();
-   imageObject.setimageId(0);
-   imageObject.setimageName(payloadpayloadPostObject.getimageName());
-   imageObject.setimageUrl(payloadpayloadPostObject.getimageUrl());
-
-   String postImageParameter = imageObject.toJSON().toJSONString();
-
-    try {
-      Object returnServicePostImage = Context.getCurrent().invoke(
-          "i5.las2peer.services.uatTestImage.uatTestImage@1.0", "postImage", new Serializable[] {postImageParameter});
-      int imageId = (int) returnServicePostImage;
-
-      // now process music object
-      Connection conn = service.dbm.getConnection();
-      PreparedStatement query = conn.prepareStatement(
-        "INSERT INTO uatTest.tblMusic(musicName, musicUrl, imageId) VALUES(?,?,?) ");
-      query.setString(1, payloadpayloadPostObject.getmusicName());
-      query.setString(2, payloadpayloadPostObject.getmusicUrl());
-      query.setInt(3, imageId);
-      query.executeUpdate();
-
-      // get id of the new added image
-      ResultSet generatedKeys = query.getGeneratedKeys();
-      if (generatedKeys.next()) {
-        return Response.status(HttpURLConnection.HTTP_OK).entity(generatedKeys.getLong(1)).build();
-      } else {
-        return Response.status(HttpURLConnection.HTTP_OK).entity(0).build();
-      }
-
-    } catch (Exception e) {
-        e.printStackTrace();
-        return Response.status(HttpURLConnection.HTTP_INTERNAL_ERROR).entity(0).build();
+    // responsePost
+    boolean responsePost_condition = true;
+    if(responsePost_condition) {
+      String responsePostId = "Some String";
+      return Response.status(HttpURLConnection.HTTP_OK).entity(responsePostId).build();
     }
+    return null;
   }
 
 
