@@ -146,7 +146,7 @@ public class uatMusic extends RESTService {
 
         // music + image
         classes.image imageResult = imageMap.get(musicResult.getimageId());
-        classes.imageMusic imageMusicResult = new classes().new musicImage();
+        classes.musicImage imageMusicResult = new classes().new musicImage();
 
         if(imageResult != null) {
           imageMusicResult.setimageName(imageResult.getimageName());
