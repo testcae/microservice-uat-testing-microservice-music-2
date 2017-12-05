@@ -194,8 +194,8 @@ public class uat-music extends RESTService {
        // get image object to pass to music service
    classes.image imageObject = new classes().new image();
    imageObject.setimageId(0);
-   imageObject.setimageName(payloadpayloadPostMusicObject.getimageName());
-   imageObject.setimageUrl(payloadpayloadPostMusicObject.getimageUrl());
+   imageObject.setimageName(payloadpayloadPostObject.getimageName());
+   imageObject.setimageUrl(payloadpayloadPostObject.getimageUrl());
 
    String postImageParameter = imageObject.toJSON().toJSONString();
 
