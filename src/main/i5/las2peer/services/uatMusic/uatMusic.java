@@ -1,4 +1,4 @@
-package i5.las2peer.services.uat-music;
+package i5.las2peer.services.uatMusic;
 
 
 import java.net.HttpURLConnection;
@@ -19,7 +19,7 @@ import i5.las2peer.api.ManualDeployment;
 import i5.las2peer.api.ServiceException;
 import i5.las2peer.restMapper.RESTService;
 import i5.las2peer.restMapper.annotations.ServicePath;
-import i5.las2peer.services.uat-music.database.DatabaseManager;
+import i5.las2peer.services.uatMusic.database.DatabaseManager;
 import java.sql.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -44,7 +44,7 @@ import org.json.simple.*;
  */
 @ServicePath("musicapp")
 @ManualDeployment
-public class uat-music extends RESTService {
+public class uatMusic extends RESTService {
 
 
   /*
@@ -58,7 +58,7 @@ public class uat-music extends RESTService {
 
 
 
-  public uat-music() {
+  public uatMusic() {
 	super();
     // read and set properties values
     setFieldValues();
@@ -77,7 +77,7 @@ public class uat-music extends RESTService {
 
   @Api
   @SwaggerDefinition(
-      info = @Info(title = "uat-testing-microservice-music-2", version = "1.0",
+      info = @Info(title = "uat-testing-microservice-music-2", version = "1",
           description = "UAT microservice music 2",
           termsOfService = "LICENSE.txt",
           contact = @Contact(name = "Melisa Cecilia", email = "CAEAddress@gmail.com") ,
@@ -86,7 +86,7 @@ public class uat-music extends RESTService {
   @Path("/")
   public static class RootResource {
 
-    private final uat-music service = (uat-music) Context.getCurrent().getService();
+    private final uatMusic service = (uatMusic) Context.getCurrent().getService();
 
       /**
    * 
